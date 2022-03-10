@@ -45,9 +45,10 @@ let NamesLength = names.map(name1 => name1.length)
 console.log(NamesLength);
 
 //6
+
 let summ = 0;
-for(let i = 0;i < createdNamesLength.length;i++){
-    summ += createdNamesLength[i]
+for(let i = 0;i < NamesLength.length;i++){
+    summ += NamesLength[i]
 }
 console.log(summ);
 
@@ -73,15 +74,18 @@ let arrayOfNumber = [4,6,2,8,4,7,9,10];
 function arrayNum(arrayOfNumber){
     sum = 0
     for(let i=0;i<arrayOfNumber.length;i++);
-    sum += arrayOfNumber[i];
+    sum += arrayOfNumber;
+// }
+//     if(sum > 100){
+//         return true;
+// }
+//     else{
+//         return false;
+//     }
+    return sum > 100;
 }
-    if(sum > 100){
-    return true;
-}
-    else{
-    return false;
-}
-console.log(arrayNum(arrayOfNumber[i]));
+
+console.log(arrayNum(arrayOfNumber));
 
 //10
 
@@ -114,7 +118,7 @@ console.log(arraysNum([8,6,5,3,5],[4,9,6,2,5]));
 
 
 
-console.log(array1And2Avg([20, 21, 22], [1, 2, 3]));
+// console.log(array1And2Avg([20, 21, 22],[1, 2, 3]));
 
 //12
 function willBuyDrink(isHotOutside,moneyInPocket){
