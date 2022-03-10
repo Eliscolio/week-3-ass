@@ -69,29 +69,27 @@ console.log(fullName("Kossi","Vigniavo"));
 
 //9
 
-let arrayOfNumber = [4,6,2,8,4,7,9,10]
+let arrayOfNumber = [4,6,2,8,4,7,9,10];
 function arrayNum(arrayOfNumber){
     sum = 0
-    for(let i=0;i<arrayOfNumber.length;i++)
-    sum += arrayOfNumber[i]
+    for(let i=0;i<arrayOfNumber.length;i++);
+    sum += arrayOfNumber[i];
 }
-if(sum > 100) {
+    if(sum > 100){
     return true;
 }
-else{
-    return false
+    else{
+    return false;
 }
-console.log(arrayNum(arrayOfNumber[i])
+console.log(arrayNum(arrayOfNumber[i]));
 
 //10
-function arrayNum(arrayOfNumber){
-    let sum = 0;
-    for(let i=0;i<arrayOfNumber.length;i++)
-    {
-        sum += arrayOfNumber[i];
-    }
-    return (sum/arrayOfNumber.length);
+
+function findAvg(avgArray){
+    return avgArray.reduce((x,y) => x + y)/avgArray.length;
 }
+
+console.log(findAvg([21,30,12,2]));
 
 //11
 
@@ -120,12 +118,14 @@ console.log(array1And2Avg([20, 21, 22], [1, 2, 3]));
 
 //12
 function willBuyDrink(isHotOutside,moneyInPocket){
-    if (isHotOutside && moneyInPocket) > 10.50{
+    if (isHotOutside && moneyInPocket >= 10.50){
         return true;
-    } else {return false;
+    } 
+    else {
+        return false;
     }
 }
-console.log(willBuyDrink(true;12));
+console.log(willBuyDrink(true,12));
 
 
 
