@@ -18,7 +18,7 @@ class Menu {
     mainMenu(){
         let menuSelection =prompt(`
             1)Create a song
-            2)Play a song
+            2)View a song
             3)Delete a song
         `)
         switch (menuSelection){
@@ -26,7 +26,7 @@ class Menu {
                 this.addSong();
                 break;
             case "2":
-                this.viewSongs();
+                this.playSong();
                 break;
             case "3":
                 this.deleteSong()
