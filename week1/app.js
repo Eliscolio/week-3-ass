@@ -1,62 +1,73 @@
-class Song{
-    constructor(title,artist,year){
-        this.title = title;
-        this.artist = artist;
-        this.year = year;
+class Card{
+    constructor(value,description,number){
+        this.value = value
+        this.description = description
+        this.number = number
     }
-  
-    describe(){
-    return `${this.title} by ${this.Artist} in ${this.year}`
+    describe() {
+        return `${this.description} has a value of ${this.value} in the game of war`
+    }
+}
+class Deck{
+    constructor(){
+        this.cards = [];
+    }
+
+    shufflecards() {
+        this.cards = this.cards.sort(() => Math.random() - 0.5)
     }
 }
 
-class Menu {
-    constructor() {
-        this.songs = [];
+class Player {
+    constructor(name) {
+        this.name = name;
+        this.score = 0;
+        this.hand = [];
     }
     
-    mainMenu(){
-        let menuSelection =prompt(`
-            1)Create a song
-            2)View a song
-            3)Delete a song
-        `)
-        switch (menuSelection){
-            case "1":
-                this.addSong();
-                break;
-            case "2":
-                this.playSong();
-                break;
-            case "3":
-                this.deleteSong()
-                break;
-            default:
-                this.mainMenu();
-        }
-    }
-   addSong() { 
-        const newSong = new Song(
-            prompt("Enter Title"),
-            prompt("enter artist"),
-            prompt("enter year")
-        );
-        this.Songs.push(newSong);
-        this.mainMenu();
-    }
-    deleteSong(){
-        alert("Delete a book")
-    } 
-    viewSongs() {
-        let listOfSongs = "";
-        for (let song of this.songs ){
-            listOfSongs += (Song.describe() + "\n");
-        }
-        prompt(listOfSongs + "\n\nEnter 0 to back to the main menu: ");
-        this.mainMenu();
-
+    handshuffle() {
+        this.hand = this.hand.sort(() => Math.random() - 0.5);
     }
 }
-const menu = new Menu();
-menu.mainMenu();
-console.log(Song)
+
+function gamePlay (){
+     let player1 = makePlayers();
+     let player2 = makePlayers();
+
+     let Suits = ['C', 'H', 'D', 'S'];
+     let Values = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
+     const gameDeck = new Deck();
+    //  console.log(card);
+     for (let i = 0; i < Suits.length; i++){
+          for (let j = 0; j < Values.length; j++){
+             console.log(`${Values[j]} + ${Suits[i]}`);
+             let card = new Card(Values[j],`${Values[j]} of ${Suits[i]}s`, [j]);
+             console.log(card);
+             gameDeck.cards.push(card);
+             console.log(gameDeck.cards);
+         }
+         
+     }
+     gameDeck.shufflecards()
+     console.log(gameDeck.cards)
+     for(let i = 0;i < 26; i++){
+         let p1 = gameDeck.cards.pop()
+         let p2 = gameDeck.cards.pop()
+    
+         player1.hand.push(p1)
+         player2.hand.push(p2)
+         console.log(player1.hand.length);
+
+     }
+     
+     }  
+
+
+    //const card = new Card(`${Values} of ${suits}`)
+
+function makePlayers() {
+    const newPlayer = new Player(prompt("what's your name"));
+    return newPlayer;
+    }
+gamePlay();
+    
