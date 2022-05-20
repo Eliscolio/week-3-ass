@@ -1,58 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
-
-<link rel="stylesheet" href="./week1/node_modules/bootstrap/dist/css/bootstrap.min.css">
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+  <title>TIC-TAC-TOE</title>
 </head>
-<body class="container" style="background-color:red">
-  <br>
-  <div class="card">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-sm">
-          <div class="form-group">
-            <label for="new-start-date">Start Date</label>
-            <input type="date" class="form-control" id="new-start-date">
-          </div>
+<body>
+    <header>
+        <h1>TIC-TAC-TOE</h1>
+        <h4>Player 1 Score <span id="p-1-wins">0</span></h4>
+        <h4>Player 2 Score <span id="p-2-wins">0</span></h4>
+        <h4>Tie <span id="ties">0</span></h4>
+        <h2>Turn: Player <span id="turn">1</span></h2>
+    </header>
+    <div class="board">
+        <div class="row row-1">
+            <div class="box col-1" id="1"></div>
+            <div class="box col-2" id="2"></div>
+            <div class="box col-3" id="3"></div>
         </div>
-        <div class="col-sm">
-          <div class="form-group">
-            <label for="new-end-date">End Date</label>
-            <input type="date" class="form-control" id="new-end-date">
-          </div>
+        <div class="row row-2">
+            <div class="box col-1" id="4"></div>
+            <div class="box col-2" id="5"></div>
+            <div class="box col-3" id="6"></div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm">
-          <div class="form-group">
-            <label for="new-task">Start Date</label>
-            <input type="text" class="form-control" id="new-task" placeholder="task">
-          </div>
+        <div class="row row-3">
+            <div class="box col-1" id="7"></div>
+            <div class="box col-2" id="8"></div>
+            <div class="box col-3" id="9"></div>
         </div>
-      </div>
-      <div>
-        <button id="add" class="btn btn-primary from-control">Create</button>
-      </div>
+
     </div>
-  </div>
-  <table id="list" class="table table-dark table-sriped">
-    <tr>
-      <th>Task</th>
-      <th>Date Created</th>
-      <th>Start Date</th>
-      <th>Due Date</th>
-      <th>Actions</th>
-    </tr>
-  </table>
-
-  <script src="ToDo.js"></script>
-
-
-          
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+    <script src="app.js"></script>
 </body>
 </html>
