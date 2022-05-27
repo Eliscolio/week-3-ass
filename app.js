@@ -31,7 +31,7 @@ function checkWin(element, val) {
             $(element).removeClass(val);
             $('#turn').text("Click reset button to start")
         }
-    }S
+    }
 }
 
 
