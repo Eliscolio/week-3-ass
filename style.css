@@ -11,6 +11,13 @@ h1, h2, h4{
     display: flex;
 
 }
+.row > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    color: white;
+}
 .row-1,.row-2{
     border-bottom: 5px black solid
 }
