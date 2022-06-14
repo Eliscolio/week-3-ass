@@ -1,63 +1,71 @@
-var p1Score = 0;
-var p2Score = 0;
-var ties = 0;
-var turn =  1;
+var app = new function(){
+    this.el= document.getElementById('tasks');
+    this.tasks=[];
 
-function checkWin(element, val) {
-    if ($(".row-1 ." + val).length === 3 
-    || $(".row-2 ." + val).length === 3 
-    || $(".row-3 ." + val).length === 3
-    || $(".box.col-1." + val).length === 3
-    || $(".box.col-2." + val).length === 3
-    || $(".box.col-3." + val).length === 3
-    || ($("#1").hasClass(val)
-        && $("#5").hasClass(val)
-        && $("#9").hasClass(val))
-    || ($("#3").hasClass(val)
-        && $("#5").hasClass(val)
-        && $("#7").hasClass(val))
-        )
-    {   
-        if (val === "X") {
-            alert("Player 1 won")
-            p1Score = p1Score + 1;
-            $("#p-1-wins").text(p1Score);
-            $(element).removeClass(val);
-            $('#turn').text("Click reset button to start")
-        } else {
-            alert("Player 2 won ")
-            p2Score = p2Score + 1;
-            $("#p-2-wins").text(p2Score);
-            $(element).removeClass(val);
-            $('#turn').text("Click reset button to start")
+    this.FetchAll = function(){
+        var data='';
+
+        if(this.tasks.length>0){
+            for(i=0;i<this.tasks.length;i++){
+                data+='<tr>';
+                data+='<td>'+(i+1)+'. '+this.tasks[i]+'</td>';
+                data+='<td><button onclick="app.Edit('+i+')"class="btn btn-warning">Edit</button></td>';
+                data+='<td><button onclick="app.Delete('+i+')"class="btn btn-danger">Delete</button></td>';
+                data+='</tr>'
+            }
+        }
+        this.Count(this.tasks.length);
+        console.log(data);
+        return this.el.innerHTML = data
+    };
+
+    this.Add = function(){
+        el = document.getElementById('add-todo');
+        var task = el.value;
+        if(task){
+            this.tasks.push(task.trim())
+            el.value ='';
+            this.FetchAll();
+
+            var editInput =  document.getElementById('edit-todo');
+            editInput.value = '';
+            var saveBtn = document.getElementById("save-btn");
+            saveBtn.removeAttribute("item");
+            document.getElementById('edit-box').style.display = "none";
         }
     }
+    this.Edit = function(item){
+        el = document.getElementById('edit-todo');
+        el.value = this.tasks[item]
+        document.getElementById('edit-box').style.display = 'block';
+        var saveBtn = document.getElementById("save-btn");
+        saveBtn.setAttribute("item", item);    
+    };
+    this.Save = function() {
+        var updatedTask =  document.getElementById('edit-todo').value;
+        if (updatedTask) {
+            var saveBtn = document.getElementById("save-btn");
+            var index = parseInt(saveBtn.getAttribute("item"));
+            this.tasks[index] = updatedTask;
+            this.FetchAll();
+
+            updatedTask.value = '';
+            saveBtn.removeAttribute("item");
+            document.getElementById('edit-box').style.display = "none";
+        }
+    };
+    this.Delete = function(item){
+        this.tasks.splice(item, 1);
+        this.FetchAll();
+    };
+
+    this.Count = function(data){
+
+    };
 }
-
-
-
-
-$(".box").click(function (){
-    if(turn === 1){
-        $(this).text('X')
-        $(this).addClass('X')
-        turn = 2
-        $('#turn').text("Turn: Player " + turn)
-        checkWin(this, "X")
-    } else {
-        $(this).text('O')
-        $(this).addClass('O')
-        turn = 1
-        $('#turn').text("Turn: Player " + turn)
-        checkWin(this, "O")
-    }
     
-})
+app.FetchAll();
 
-
-$("#reset-board").click(function() {
-    $(".row .box").text(null);
-    $(".box").removeClass("X");
-    $(".box").removeClass("O");
-    turn = 1;
-});
+function CloseInput(){
+    document.getElementById('edit-box').style.display = 'none';
+}
